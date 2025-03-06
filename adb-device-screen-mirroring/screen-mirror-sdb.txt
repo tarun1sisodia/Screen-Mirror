@@ -1,0 +1,61 @@
+Here’s a **single, comprehensive script** with **proper error handling** that combines all the steps into one. This script will:
+
+1. Install `adb` and `scrcpy` from local `.deb` files.
+2. Restore ADB keys (if available) to avoid re-authorization.
+3. Start ADB and mirror the screen via USB.
+4. Handle errors gracefully at each step.
+
+---
+# Run the script
+
+---
+
+### **How to Use**
+1. **Prepare Offline Files**:
+   - Download `.deb` files for `adb`, `scrcpy`, and dependencies (as described earlier).
+   - Place them in `/path/to/android-offline` (update `DEB_DIR` in the script if needed).
+
+2. **Backup ADB Keys**:
+   - Backup your ADB keys to `~/adb-backup`:
+     ```bash
+     mkdir -p ~/adb-backup
+     cp ~/.android/adbkey* ~/adb-backup/
+     ```
+
+3. **Run the Script**:
+   - Save the script as `offline-adb-scrcpy.sh`.
+   - Make it executable:
+     ```bash
+     chmod +x offline-adb-scrcpy.sh
+     ```
+   - Execute it:
+     ```bash
+     ./offline-adb-scrcpy.sh
+     ```
+
+---
+
+### **Error Handling**
+- **Missing `.deb` Files**: The script checks if the `.deb` files exist and exits with an error if not.
+- **ADB Key Restoration**: If no backup keys are found, it proceeds with new key generation.
+- **Device Connection**: Checks if a device is connected and authorized before starting `scrcpy`.
+- **ADB Server Issues**: Restarts the ADB server and ensures it’s running.
+
+---
+
+### **Example Output**
+```bash
+Starting offline ADB and scrcpy setup...
+Installing ADB and scrcpy from local .deb files...
+Packages installed successfully.
+Restoring ADB keys...
+ADB keys restored successfully.
+Starting ADB server...
+Device connected: 5d9590a4
+Mirroring screen via USB (no audio)...
+Setup complete! Screen mirroring should now be active.
+```
+
+---
+
+This script is robust, handles errors gracefully, and ensures a smooth offline setup. Let me know if you need further tweaks! 🛠️🔌
