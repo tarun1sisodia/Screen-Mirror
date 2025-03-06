@@ -1,0 +1,19 @@
+changelog:
+  categories:
+    - title: Features
+      labels:
+        - enhancement
+    - title: Fixed
+      labels:
+        - bug
+    - title: Miscellaneous
+      labels:
+        - refactor
+        - dependencies
+        - documentation
+        - testing
+    - title: Packages/apps
+      labels:
+      - package::documentation
+      - package::addition
+      - package::breakage
